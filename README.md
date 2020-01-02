@@ -19,6 +19,9 @@ Two times will not conflict
 
 Notice : (0,8),(8,10) is not conflict at 8
 ```
+## Approach :
+Suppose you have lot of meetings, for example lets say 10 meetings on a particular day. Now you want to make sure, no two meetings overlap, overlap means a second meeting starts while a previous meeting is still going on. If this happens, it means the person can not attend both the mettings. So to solve this problem, we just have to find if there is an overlap between any of the given meetings. If we find an overlap we will retutn false. If there is no overlap between any of the meetings time, it means the person can attend all the meetings, so we will return true for this case.
+
 ### Implementation
 
 
