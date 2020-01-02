@@ -25,7 +25,7 @@ Suppose you have lot of meetings, for example lets say 10 meetings on a particul
 **Note : We are given that start time of a meeting will always be less than the end time of the meeting. And also if a meeting ends at,  say 2, the person can attend a next meeting that start from 2, it is not considered as an overlap.** 
 
 We can solve this problem, by first sorting all the meetings according to their start times.
-Then just iterate over all the meetings, and check if the next meeting's start times 
+Then just iterate over all the meetings, and check if the next meeting's start time is less than previous meeting's end time. If thats the
 
 ### Implementation
 
