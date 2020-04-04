@@ -31,51 +31,20 @@ After sorting just iterate over all the meetings, and check if the next meeting'
 
 
 ```java
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-
-class Interval {
-	int start, end;
-
-	Interval(int start, int end) {
-		this.start = start;
-		this.end = end;
-	}
+class Solution {
+    public boolean canAttendMeetings(int[][] intervals) {
+        if(intervals == null || intervals.length == 0)
+            return true;
+        
+        Arrays.sort(intervals, (m1, m2) -> m1[0] - m2[0]);
+        for(int i = 1; i < intervals.length; i++) {
+            if(intervals[i][0] < intervals[i-1][1])
+                return false;
+        }
+        return true;
+        
+    }
 }
-
-public class App {
-	public static void main(String[] args) {
-		List<Interval> meetings = new ArrayList<Interval>();
-		meetings.add(new Interval(0, 30));
-		meetings.add(new Interval(5, 10));
-		meetings.add(new Interval(15, 20));
-		System.out.println(canAttendMeetings(meetings));
-	}
-
-	public static class IntervalComparator implements Comparator<Interval> {
-		public int compare(Interval a, Interval b) {
-			return a.start - b.start;
-		}
-	}
-
-	public static boolean canAttendMeetings(List<Interval> intervals) {
-		if (intervals == null) {
-			return false;
-		}
-		
-		intervals.sort(new IntervalComparator());
-		for (int i = 0; i < intervals.size() - 1; i++) {
-			if (intervals.get(i).end > intervals.get(i + 1).start) {
-				return false;
-			}
-		}
-
-		return true;
-	}
-
-}
-
 ```
 Above implementation have runtime complexity of O(nlogn) and space complexity of O(1)
 
