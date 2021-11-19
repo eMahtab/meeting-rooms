@@ -27,7 +27,7 @@ Suppose you have lot of meetings, for example lets say 10 meetings on a particul
 We can solve this problem, by first sorting all the meetings according to their start times.
 After sorting just iterate over all the meetings, and check if the next meeting's start time is less than previous meeting's end time. If thats the case, it means there is an overlap between meetings time, so we return false, but if we don't find an overlap we return true, which means there is no overlap and the person can attend all the meetings.
 
-### Implementation
+### Implementation 1
 
 
 ```java
@@ -46,7 +46,21 @@ class Solution {
     }
 }
 ```
-Above implementation have runtime complexity of O(nlogn) and space complexity of O(1)
+
+### Implementation 2
+```java
+class Solution {
+    public boolean canAttendMeetings(int[][] intervals) {
+        Arrays.sort(intervals, (m1,m2) -> m1[0] - m2[0]);
+        for(int i = 0; i < intervals.length - 1; i++) {
+            if(intervals[i+1][0] < intervals[i][1])
+                return false;
+        }
+        return true;
+    }
+}
+```
+Above implementations have runtime complexity of O(nlogn) and space complexity of O(1)
 
 ```
 Runtime Complexity = O(nlogn)
